@@ -1,0 +1,199 @@
+/* resets bowsers deaults styles */
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* define css variables */
+
+:root {
+  --bg-clr: #252525;
+  --bg-clock-clr: rgb(255, 255, 255, 0.4);
+}
+
+/* basic styles */
+
+body {
+  background: var(--bg-clr);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+  background: -webkit-linear-gradient(45deg, #c193c5, #7bc6cc);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+/* clock styles */
+
+.Analog-Clock {
+  display: flex;
+  position: absolute;
+  top: 25%;
+  width: 75%;
+  aspect-ratio: 1 / 1;
+  padding: 1rem;
+  border: #f1f1f1 2px solid;
+  border-radius: 50%;
+  backdrop-filter: blur(50px);
+  background: var(--bg-clock-clr);
+  box-shadow: 0 0px 8px 1px rgb(255, 255, 255, 0.2),
+    inset 0px 0px 20px 8px rgb(0, 0, 0, 0.4);
+}
+
+.base-clock span {
+  position: absolute;
+  inset: 10px;
+  left: 10px;
+  text-align: center;
+  transform: rotate(calc(var(--i) * 30deg));
+}
+
+.base-clock span b {
+  display: inline-block;
+  font-weight: bolder;
+  font-size: x-large;
+  transform: rotate(calc(var(--i) * -30deg));
+}
+
+/* Clock Hands */
+
+.hands {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-dot {
+  position: relative;
+  z-index: 1;
+  width: clamp(5px, 12px, 18px);
+  height: clamp(5px, 12px, 18px);
+  border-radius: 50%;
+  background: #252525;
+}
+
+.clock-hand-hr {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 3px;
+  height: 60px;
+  transform-origin: bottom;
+  translate: 0px -30px;
+  background: #520556;
+}
+
+.clock-hand-hr::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -22.5px;
+  padding: 1.5rem;
+  background: #520556;
+  clip-path: polygon(50% 14%, 64% 48%, 49% 31%, 50% 32%, 34% 48%);
+}
+
+.clock-hand-min {
+  position: absolute;
+  width: 2px;
+  height: 85px;
+  transform-origin: bottom;
+  translate: 0px -45px;
+  background: #283149;
+}
+
+.clock-hand-min::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -22.5px;
+  padding: 1.5rem;
+  background: #283149;
+  clip-path: polygon(50% 14%, 64% 48%, 49% 31%, 50% 32%, 34% 48%);
+}
+
+.clock-hand-ss {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  transform-origin: bottom;
+  translate: 0px -51px;
+  background: #344fa1;
+}
+
+.clock-hand-ss::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -22.5px;
+  padding: 1.5rem;
+  background: #344fa1;
+  clip-path: polygon(50% 14%, 64% 48%, 49% 31%, 50% 32%, 34% 48%);
+}
+
+/* responsive screen */
+
+/* tablets Screen */
+
+@media (767px < width < 1080px) {
+  .Analog-Clock {
+    width: 50%;
+  }
+  .clock-hand-hr {
+    height: 100px;
+    translate: 0px -50px;
+  }
+  .clock-hand-min {
+    height: 120px;
+    translate: 0px -60px;
+  }
+  .clock-hand-ss {
+    height: 150px;
+    translate: 0px -75px;
+  }
+}
+
+/* Laptops Screen */
+
+@media (width > 1080px) {
+  header {
+    margin-top: 7%;
+  }
+  .Analog-Clock {
+    width: 30%;
+  }
+  .clock-hand-hr {
+    height: 100px;
+    translate: 0px -50px;
+  }
+  .clock-hand-min {
+    height: 120px;
+    translate: 0px -60px;
+  }
+  .clock-hand-ss {
+    height: 150px;
+    translate: 0px -75px;
+  }
+}
